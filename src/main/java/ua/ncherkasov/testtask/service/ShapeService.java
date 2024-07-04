@@ -42,7 +42,7 @@ public interface ShapeService<T extends Shape> {
         Method neededMethod = Arrays.stream(ShapeService.class.getDeclaredMethods())
                                     .filter(m -> m.getName().toLowerCase().contains(operationType.toLowerCase()))
                                     .findAny()
-                                    .orElseThrow(() -> new OperationNotFoundException("Method '" + operationType + "' not found"));
+                                    .orElseThrow(() -> new OperationNotFoundException("Operation '" + operationType + "' not found"));
         return (double) neededMethod.invoke(this, shape);
     }
     boolean isSupported(String shapeType);
